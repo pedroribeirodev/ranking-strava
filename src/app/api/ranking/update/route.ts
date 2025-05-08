@@ -6,9 +6,18 @@ import {
   setRankingData,
 } from "@/lib/kv";
 import { getClubActivities } from "@/lib/strava";
+import type { ClubActivity } from "@/types";
 import { NextResponse } from "next/server";
 
-function generateActivityId(activity: any) {
+interface ProcessedActivity {
+  id: string;
+  athlete: string;
+  name: string;
+  distance: number;
+  createdAt: number;
+}
+
+function generateActivityId(activity: ClubActivity) {
   // Gera um id simples baseado no nome, distância e atleta
   return `${activity.name}|${activity.distance}|${
     activity.athlete
@@ -30,13 +39,13 @@ export async function POST() {
 
     // Busca todas as atividades já processadas
     const processed = await getAllProcessedActivities();
-    const processedIds = new Set(processed.map((a) => a.id));
+    const processedIds = new Set(processed.map((a: ProcessedActivity) => a.id));
 
     // Salva cada atividade processada no Redis com data local, só se não existir
     for (const activity of activities) {
       const id = generateActivityId(activity);
       if (!processedIds.has(id)) {
-        await saveProcessedActivity({
+        const processedActivity: ProcessedActivity = {
           id,
           athlete: activity.athlete
             ? `${activity.athlete.firstname} ${activity.athlete.lastname}`
@@ -44,7 +53,8 @@ export async function POST() {
           name: activity.name,
           distance: activity.distance,
           createdAt: Date.now(),
-        });
+        };
+        await saveProcessedActivity(processedActivity);
       }
     }
 

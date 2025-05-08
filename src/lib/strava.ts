@@ -42,7 +42,7 @@ export async function getValidAccessToken(): Promise<string> {
 export async function getClubActivities(
   perPage = 30,
   page = 1
-): Promise<any[]> {
+): Promise<ClubActivity[]> {
   const accessToken = await getValidAccessToken();
   const response = await fetch(
     `${STRAVA_API_URL}/clubs/${CLUB_ID}/activities?per_page=${perPage}&page=${page}`,

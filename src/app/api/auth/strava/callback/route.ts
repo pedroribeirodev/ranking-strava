@@ -2,24 +2,6 @@
 import { setStravaToken } from "@/lib/kv";
 import { NextRequest, NextResponse } from "next/server";
 
-// Definição da interface StravaTokenData (idealmente, importe de '@/types')
-interface StravaTokenData {
-  token_type: string;
-  expires_at: number; // Timestamp UNIX em segundos
-  expires_in: number; // Segundos a partir de agora até a expiração
-  refresh_token: string;
-  access_token: string;
-  athlete?: {
-    // O Strava pode retornar informações do atleta
-    id: number;
-    username: string | null;
-    resource_state: number;
-    firstname: string;
-    lastname: string;
-    // ... outros campos do atleta
-  };
-}
-
 const STRAVA_TOKEN_URL = "https://www.strava.com/oauth/token";
 const CLIENT_ID = process.env.STRAVA_CLIENT_ID!;
 const CLIENT_SECRET = process.env.STRAVA_CLIENT_SECRET!;

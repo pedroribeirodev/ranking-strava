@@ -1,23 +1,30 @@
 // types/index.ts
 export interface StravaTokenData {
-  access_token: string;
-  refresh_token: string;
+  token_type: string;
   expires_at: number;
   expires_in: number;
+  refresh_token: string;
+  access_token: string;
+  athlete?: {
+    id: number;
+    username: string | null;
+    resource_state: number;
+    firstname: string;
+    lastname: string;
+  };
 }
 
 export interface ClubActivity {
   id: number;
+  name: string;
+  distance: number;
+  start_date: string;
+  start_date_local: string;
   athlete: {
     id: number;
     firstname: string;
     lastname: string;
   };
-  type: string;
-  moving_time: number;
-  distance: number;
-  total_elevation_gain: number;
-  start_date: string;
 }
 
 export interface RankingEntry {
