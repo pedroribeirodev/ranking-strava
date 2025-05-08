@@ -52,7 +52,7 @@ export async function POST() {
             : "Desconhecido",
           name: activity.name,
           distance: activity.distance,
-          createdAt: Date.now(),
+          createdAt: new Date(activity.start_date_local).getTime(),
         };
         await saveProcessedActivity(processedActivity);
       }
@@ -61,8 +61,8 @@ export async function POST() {
     // Busca o timestamp de início do ranking
     const startTimestamp = await getRankingStartTimestamp();
 
-    // Busca apenas as atividades cadastradas nos últimos 7 dias E após o marco zero
-    let recentActivities = await getRecentProcessedActivities(7);
+    // Busca apenas as atividades cadastradas nos últimos 30 dias E após o marco zero
+    let recentActivities = await getRecentProcessedActivities(30);
     if (startTimestamp) {
       recentActivities = recentActivities.filter(
         (a) => a.createdAt > startTimestamp

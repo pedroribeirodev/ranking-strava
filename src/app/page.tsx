@@ -1,5 +1,6 @@
 // app/page.tsx
 import { RankingTable } from "@/components/RankingTable";
+import { RecentActivities } from "@/components/RecentActivities";
 
 // Para forçar a página a ser dinâmica e buscar dados frescos a cada requisição (ou com revalidate)
 export const dynamic = "force-dynamic";
@@ -20,7 +21,7 @@ export default async function Home() {
   return (
     <main className="container mx-auto py-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">Ranking Semanal</h1>
+        <h1 className="text-4xl font-bold mb-8">Ranking Mensal</h1>
 
         <div className="mb-8 p-4 bg-muted rounded-md text-muted-foreground text-sm max-w-2xl mx-auto">
           <strong>Como funciona a pontuação do ranking?</strong>
@@ -49,7 +50,15 @@ export default async function Home() {
         </div>
 
         {ranking && ranking.length > 0 ? (
-          <RankingTable data={ranking} lastUpdated={Date.now()} />
+          <>
+            <RankingTable data={ranking} lastUpdated={Date.now()} />
+            <div className="my-8" />
+            <RecentActivities />
+            <div className="my-8" />
+            <div className="backdrop-blur-md bg-muted/60 rounded-md p-6 text-center text-lg text-muted-foreground font-semibold shadow-md">
+              Em breve as conquistas
+            </div>
+          </>
         ) : (
           <div className="text-center py-12">
             <p className="text-muted-foreground">
