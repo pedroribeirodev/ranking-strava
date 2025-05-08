@@ -40,7 +40,7 @@ export default async function Home() {
       <footer className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">
         <p>Powered by Strava API, Next.js & Vercel</p>
         <p className="mt-1">
-          <Link href="/admin" className="text-primary hover:underline">
+          <Link href="/painel-admin" className="text-primary hover:underline">
             Admin Setup
           </Link>
         </p>

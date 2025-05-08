@@ -24,7 +24,7 @@ export default function RootLayout({
             <div className="container mx-auto py-4 flex justify-between items-center">
               <h1 className="text-xl font-bold">Ranking Strava</h1>
               <Link
-                href="/admin"
+                href="/painel-admin"
                 className="text-muted-foreground hover:text-foreground"
               >
                 Administração
