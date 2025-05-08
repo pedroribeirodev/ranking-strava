@@ -22,6 +22,32 @@ export default async function Home() {
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-8">Ranking Semanal</h1>
 
+        <div className="mb-8 p-4 bg-muted rounded-md text-muted-foreground text-sm max-w-2xl mx-auto">
+          <strong>Como funciona a pontuação do ranking?</strong>
+          <ul className="list-disc pl-5 mt-2 space-y-1">
+            <li>
+              A pontuação de cada atividade é calculada assim:
+              <br />
+              <span className="italic">
+                Tempo em movimento (em minutos) × multiplicador do tipo de
+                atividade
+              </span>
+            </li>
+            <li>
+              Cada tipo de atividade tem um multiplicador diferente para
+              garantir equilíbrio entre corrida, pedalada, natação, caminhada,
+              etc.
+            </li>
+            <li>
+              Exemplos de multiplicadores: Corrida (1.2), Pedalada (0.5),
+              Natação (2.5), Caminhada (0.8), entre outros.
+            </li>
+            <li>
+              O objetivo é tornar o ranking mais justo para todos os esportes!
+            </li>
+          </ul>
+        </div>
+
         {ranking && ranking.length > 0 ? (
           <RankingTable data={ranking} lastUpdated={Date.now()} />
         ) : (
