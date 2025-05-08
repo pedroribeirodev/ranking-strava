@@ -1,7 +1,6 @@
 // app/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Link from "next/link";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,20 +18,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
-        <div className="min-h-screen bg-background">
-          <header className="border-b">
-            <div className="container mx-auto py-4 flex justify-between items-center">
-              <h1 className="text-xl font-bold">Ranking Strava</h1>
-              <Link
-                href="/painel-admin"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Administração
-              </Link>
-            </div>
-          </header>
-          {children}
-        </div>
+        <div className="min-h-screen bg-background">{children}</div>
       </body>
     </html>
   );
