@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"; // Gerado pelo shadcn/ui
-import type { RankingEntry } from "@/lib/kv"; // Ajuste o caminho se necessário
+import type { RankingEntry } from "@/types"; // Corrigido o caminho de importação
 
 interface RankingTableProps {
   data: RankingEntry[];
