@@ -53,7 +53,7 @@ export async function GET(request: NextRequest) {
     await setStravaToken(tokenData);
 
     return NextResponse.redirect(
-      new URL("/admin?success=strava_auth_complete", appURL)
+      new URL("/painel-admin?success=strava_auth_complete", appURL)
     );
   } catch (err: unknown) {
     console.error("Error in Strava callback processing:", err);
