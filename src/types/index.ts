@@ -20,6 +20,9 @@ export interface ClubActivity {
   distance: number;
   start_date: string;
   start_date_local: string;
+  type: string;
+  moving_time: number;
+  total_elevation_gain: number;
   athlete: {
     id: number;
     firstname: string;
